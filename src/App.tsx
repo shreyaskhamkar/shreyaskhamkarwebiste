@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Quotes from "./pages/Quotes";
 import Marathons from "./pages/Marathons";
 import MarathonEventPhotos from "./pages/MarathonEventPhotos";
+import Blog from "./pages/Blogs";
 
 const App: React.FC = () => (
   <Router>
@@ -19,6 +20,7 @@ const App: React.FC = () => (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collection" element={<Collection />} />
+          <Route path="/blogs" element={<Blog />} />
           <Route path="/books" element={<Books />} />
           <Route path="/quotes" element={<Quotes />} />
           <Route path="/marathons/:eventId" element={<MarathonEventPhotos />} />
