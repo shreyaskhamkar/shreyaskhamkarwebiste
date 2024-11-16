@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -7,9 +7,26 @@ import {
   Link,
   Container,
   Avatar,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Header: React.FC = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Blog", href: "/blogs" },
+    { name: "Dev Log", href: "/devlog" },
+    { name: "Collection", href: "/collection" },
+    { name: "Marathon", href: "/marathons" },
+    { name: "About", href: "/about" },
+  ];
+
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Container>
@@ -20,25 +37,51 @@ const Header: React.FC = () => {
               Shreyas Khamkar
             </Typography>
           </Box>
-          <Box>
-            <Link href="/" color="inherit" sx={{ margin: 2 }}>
-              Home
-            </Link>
-            <Link href="/blogs" color="inherit" sx={{ margin: 2 }}>
-              Blog
-            </Link>
-            <Link href="/devlog" color="inherit" sx={{ margin: 2 }}>
-              Dev Log
-            </Link>
-            <Link href="/collection" color="inherit" sx={{ margin: 2 }}>
-              Collection
-            </Link>
-            <Link href="/marathons" color="inherit" sx={{ margin: 2 }}>
-              Marathon
-            </Link>
-            <Link href="/about" color="inherit" sx={{ margin: 2 }}>
-              About
-            </Link>
+          {/* Desktop Navigation */}
+          <Box sx={{ display: { xs: "none", md: "block" } }}>
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                color="inherit"
+                sx={{
+                  margin: 2,
+                  textDecoration:
+                    window.location.pathname === link.href
+                      ? "underline"
+                      : "none",
+                }}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </Box>
+          {/* Mobile Navigation */}
+          <Box sx={{ display: { xs: "block", md: "none" } }}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={() => setDrawerOpen(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Drawer
+              anchor="left"
+              open={drawerOpen}
+              onClose={() => setDrawerOpen(false)}
+            >
+              <List>
+                {navLinks.map((link) => (
+                  <ListItem
+                    button
+                    key={link.name}
+                    onClick={() => setDrawerOpen(false)}
+                  >
+                    <ListItemText primary={link.name} />
+                  </ListItem>
+                ))}
+              </List>
+            </Drawer>
           </Box>
         </Toolbar>
       </Container>
