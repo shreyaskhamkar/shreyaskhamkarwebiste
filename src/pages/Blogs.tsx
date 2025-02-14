@@ -1,65 +1,89 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Typography, Box, Button } from "@mui/material";
 
-interface BlogPost {
-  src: string;
-  alt: string;
+interface MediumArticle {
   title: string;
-  excerpt: string;
+  pubDate: string;
+  link: string;
+  thumbnail: string;
+  content: string;
+  author: string;
+  // Additional fields if needed
 }
 
-const Blog: React.FC = () => {
-  const blogs: BlogPost[] = [
-    {
-      src: "src/assets/images/blog1.jpg",
-      alt: "Blog 1",
-      title: "Understanding C# Basics",
-      excerpt:
-        "This blog post covers the basic concepts of C#, including syntax, variables, and more.",
-    },
-    {
-      src: "src/assets/images/blog2.jpg",
-      alt: "Blog 2",
-      title: "Object-Oriented Programming in C#",
-      excerpt:
-        "Learn how to implement object-oriented principles like inheritance and encapsulation in C#.",
-    },
-    {
-      src: "src/assets/images/blog3.jpg",
-      alt: "Blog 3",
-      title: "Sorting and Searching Algorithms in .NET",
-      excerpt:
-        "An introduction to sorting algorithms and how to apply them in .NET using C#.",
-    },
-  ];
+const MediumArticles: React.FC = () => {
+  const [articles, setArticles] = useState<MediumArticle[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        // Fetch the RSS feed converted to JSON using rss2json
+        const response = await fetch(
+          "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@shreyaskhamkar"
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        // data.items contains the list of articles
+        setArticles(data.items);
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to fetch articles");
+        setLoading(false);
+      }
+    };
+    fetchArticles();
+  }, []);
+
+  if (loading) {
+    return <Typography>Loading articles...</Typography>;
+  }
+
+  if (error) {
+    return <Typography color="error">{error}</Typography>;
+  }
 
   return (
     <Container>
       <Typography variant="h4" component="h1" gutterBottom>
-        Blogs
+        My Medium Articles
       </Typography>
-      <Box display="flex" justifyContent="space-between" flexWrap="wrap">
-        {blogs.map((blog, index) => (
-          <Box key={index} textAlign="center" flexBasis="30%" my={2}>
+      {articles.map((article, index) => (
+        <Box key={index} mb={4} p={2} boxShadow={1} borderRadius={2}>
+          {article.thumbnail && (
             <img
-              src={blog.src}
-              alt={blog.alt}
-              style={{ maxWidth: "100%", height: "auto" }}
+              src={article.thumbnail}
+              alt={article.title}
+              style={{ maxWidth: "100%", borderRadius: "4px" }}
             />
-            <Typography variant="h6" mt={2}>
-              {blog.title}
-            </Typography>
-            <Typography variant="body1" mt={1} mb={2}>
-              {blog.excerpt}
-            </Typography>
-            <Button variant="contained" color="primary">
-              Read More
-            </Button>
-          </Box>
-        ))}
-      </Box>
+          )}
+          <Typography variant="h6" mt={2}>
+            {article.title}
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            {new Date(article.pubDate).toLocaleDateString()}
+          </Typography>
+          <Typography variant="body1" mt={1}>
+            {article.content.replace(/<[^>]+>/g, "").substring(0, 200)}
+            ...
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            href={article.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ mt: 1 }}
+          >
+            Read More
+          </Button>
+        </Box>
+      ))}
     </Container>
   );
 };
 
-export default Blog;
+export default MediumArticles;

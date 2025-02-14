@@ -1,30 +1,23 @@
 import React from "react";
-import { Container, Typography, Box, Avatar, Link } from "@mui/material";
+import { Typography, Box, Avatar, Link } from "@mui/material";
 import avatarImage from "../assets/Marathons/SangliMarathon/SNGL01949.jpg";
 const Home: React.FC = () => {
   return (
-    <Container
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
-        minHeight: "100vh",
-        py: 4,
-      }}
-    >
-      <Avatar
-        alt="Shreyas Khamkar"
-        src={avatarImage}
-        sx={{
-          width: { xs: 150, sm: 200, md: 250 }, // Responsive avatar size
-          height: { xs: 150, sm: 200, md: 250 },
-          marginBottom: 2,
-        }}
-      />
+    <Box textAlign="center">
+      <Box sx={{ display: "flex", justifyContent: "center", mt: 8 }}>
+        <Avatar
+          alt="Shreyas Khamkar"
+          src={avatarImage}
+          sx={{
+            width: { xs: 150, sm: 200, md: 250 },
+            height: { xs: 150, sm: 200, md: 250 },
+            marginBottom: 2,
+          }}
+        />
+      </Box>
+
       <Typography variant="h4" component="h1" gutterBottom>
-        Hello! I’m Shreyas.
+        Hello! I’m Shreyas
       </Typography>
       <Typography variant="body1" paragraph>
         Welcome to my website! I’m currently working as a software developer. I
@@ -52,7 +45,7 @@ const Home: React.FC = () => {
           GitHub
         </Link>
       </Box>
-    </Container>
+    </Box>
   );
 };
 
