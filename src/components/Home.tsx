@@ -1,13 +1,13 @@
 import React from "react";
 import { Typography, Box, Avatar, Link } from "@mui/material";
-import avatarImage from "../assets/Marathons/SangliMarathon/SNGL01949.jpg";
+// import avatarImage from "../assets/Marathons/SangliMarathon/SNGL01949.jpg";
 const Home: React.FC = () => {
   return (
     <Box textAlign="center">
       <Box sx={{ display: "flex", justifyContent: "center", mt: 8 }}>
         <Avatar
           alt="Shreyas Khamkar"
-          src={avatarImage}
+          // src={avatarImage}
           sx={{
             width: { xs: 150, sm: 200, md: 250 },
             height: { xs: 150, sm: 200, md: 250 },

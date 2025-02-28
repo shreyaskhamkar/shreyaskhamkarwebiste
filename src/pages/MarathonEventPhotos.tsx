@@ -2,30 +2,73 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Container, Typography, Box, Grid } from "@mui/material";
 
+import KM001 from "../assets/Marathons/KolhapurLokmat2024/KL001.jpg";
+import KM002 from "../assets/Marathons/KolhapurLokmat2024/KL002.jpg";
+import KM003 from "../assets/Marathons/KolhapurLokmat2024/KL003.jpg";
+import KM004 from "../assets/Marathons/KolhapurLokmat2024/KL004.jpg";
+import KM005 from "../assets/Marathons/KolhapurLokmat2024/KL005.jpg";
+import KM006 from "../assets/Marathons/KolhapurLokmat2024/KL006.jpg";
+import KM007 from "../assets/Marathons/KolhapurLokmat2024/KL007.jpg";
+import KM008 from "../assets/Marathons/KolhapurLokmat2024/KL008.jpg";
+import KM009 from "../assets/Marathons/KolhapurLokmat2024/KL009.jpg";
+import KM010 from "../assets/Marathons/KolhapurLokmat2024/KL0010.jpg";
+import KM011 from "../assets/Marathons/KolhapurLokmat2024/KL0011.jpg";
+import KM012 from "../assets/Marathons/KolhapurLokmat2024/KL0012.jpg";
+import KM013 from "../assets/Marathons/KolhapurLokmat2024/KL0013.jpg";
+import KM014 from "../assets/Marathons/KolhapurLokmat2024/KL0014.jpg";
+import KM015 from "../assets/Marathons/KolhapurLokmat2024/KL0015.jpg";
+import KM016 from "../assets/Marathons/KolhapurLokmat2024/KL0016.jpg";
+import KM017 from "../assets/Marathons/KolhapurLokmat2024/KL0017.jpg";
+import KM018 from "../assets/Marathons/KolhapurLokmat2024/KL0018.jpg";
+import KM019 from "../assets/Marathons/KolhapurLokmat2024/KL0019.jpg";
+import KM020 from "../assets/Marathons/KolhapurLokmat2024/KL0020.jpg";
+import KM021 from "../assets/Marathons/KolhapurLokmat2024/KL0021.jpg";
+import KM022 from "../assets/Marathons/KolhapurLokmat2024/KL0022.jpg";
+
+import SM001 from "../assets/Marathons/SangliMarathon2024/SNGL001.jpg";
+import SM002 from "../assets/Marathons/SangliMarathon2024/SNGL002.jpg";
+import SM003 from "../assets/Marathons/SangliMarathon2024/SNGL003.jpg";
+import SM004 from "../assets/Marathons/SangliMarathon2024/SNGL004.jpg";
+
 const marathons = [
   {
-    id: "sangli-marathon-2024",
+    id: "SangliMarathon2024",
     title: "Sangli Marathon 2024",
-    photos: [
-      "src/assets/Marathons/SangliMarathon/SNGL00202.jpg", // Update the image path as needed
-      "src/assets/Marathons/SangliMarathon/SNGL00203.jpg", // Update the image path as needed
-      "src/assets/Marathons/SangliMarathon/SNGL00802.jpg", // Update the image path as needed
-      "src/assets/Marathons/SangliMarathon/SNGL001949.jpg", // Update the image path as needed
-
-      // Update the image path as needed
-      // Add more photos for this event
-    ],
+    photos: [SM001, SM002, SM003, SM004],
   },
   {
-    id: "another-marathon-2024",
-    title: "Another Marathon 2024",
+    id: "KolhapurRuggdianMarathon2024",
+    title: "Kolhapur Ruggdian Marathon 2024",
+    photos: [SM001, SM002, SM003, SM004],
+  },
+  {
+    id: "kolhapurLokmatMarathon2024",
+    title: "Kolhapur Lokmat Marathon 2024",
     photos: [
-      "/src/assets/Marathons/another-marathon-2024-1.jpg", // Update the image path as needed
-      "/src/assets/Marathons/another-marathon-2024-2.jpg", // Update the image path as needed
-      // Add more photos for this event
+      KM001,
+      KM002,
+      KM003,
+      KM004,
+      KM005,
+      KM006,
+      KM007,
+      KM008,
+      KM009,
+      KM010,
+      KM011,
+      KM012,
+      KM013,
+      KM014,
+      KM015,
+      KM016,
+      KM017,
+      KM018,
+      KM019,
+      KM020,
+      KM021,
+      KM022,
     ],
   },
-  // Add more marathon events with their photos here
 ];
 
 const MarathonEventPhotos: React.FC = () => {
@@ -52,11 +95,7 @@ const MarathonEventPhotos: React.FC = () => {
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Box
               component="img"
-              sx={{
-                width: "100%",
-                height: "auto",
-                borderRadius: 1,
-              }}
+              sx={{ width: "100%", height: "auto", borderRadius: 1 }}
               src={photo}
               alt={`${marathon.title} photo ${index + 1}`}
             />
