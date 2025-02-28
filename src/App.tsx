@@ -1,10 +1,6 @@
 import React from "react";
 import { CssBaseline, Box } from "@mui/material";
-import {
-  BrowserRouter as Router,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Collection from "./pages/Collections";
@@ -22,7 +18,7 @@ const App: React.FC = () => (
     <Box display="flex" flexDirection="column" minHeight="100vh">
       <Header />
       <Box component="main" flexGrow={1}>
-        <BrowserRouter>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/blogs" element={<Blog />} />
@@ -32,7 +28,7 @@ const App: React.FC = () => (
           <Route path="/marathons/:eventId" element={<MarathonEventPhotos />} />
           <Route path="/marathons" element={<Marathons />} />
           <Route path="*" element={<h2>Page Not Found</h2>} />
-        </BrowserRouter>
+        </Routes>
       </Box>
       <Footer />
     </Box>
