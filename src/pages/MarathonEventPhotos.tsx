@@ -1,6 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Container, Typography, Box, Grid } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Grid,
+  CardMedia,
+  Card,
+  CardContent,
+} from "@mui/material";
 
 import KM001 from "../assets/Marathons/KolhapurLokmat2024/KL001.jpg";
 import KM002 from "../assets/Marathons/KolhapurLokmat2024/KL002.jpg";
@@ -30,6 +37,21 @@ import SM002 from "../assets/Marathons/SangliMarathon2024/SNGL002.jpg";
 import SM003 from "../assets/Marathons/SangliMarathon2024/SNGL003.jpg";
 import SM004 from "../assets/Marathons/SangliMarathon2024/SNGL004.jpg";
 
+import RM001 from "../assets/Marathons/KolhapurRuggdianMarathon2024/KRM001.jpeg";
+import RM002 from "../assets/Marathons/KolhapurRuggdianMarathon2024/KRM002.jpeg";
+import RM003 from "../assets/Marathons/KolhapurRuggdianMarathon2024/KRM003.jpeg";
+import RM004 from "../assets/Marathons/KolhapurRuggdianMarathon2024/KRM004.jpeg";
+
+import SHM001 from "../assets/Marathons/SataraHIllMarathon/image-1.jpg";
+import SHM002 from "../assets/Marathons/SataraHIllMarathon/image-1.jpg";
+import SHM003 from "../assets/Marathons/SataraHIllMarathon/image-12.jpg";
+import SHM004 from "../assets/Marathons/SataraHIllMarathon/image-13.jpg";
+import SHM005 from "../assets/Marathons/SataraHIllMarathon/image-13.jpg";
+import SHM006 from "../assets/Marathons/SataraHIllMarathon/image-15.jpg";
+import SHM007 from "../assets/Marathons/SataraHIllMarathon/image-18.jpg";
+import SHM008 from "../assets/Marathons/SataraHIllMarathon/image-19.jpg";
+import SHM009 from "../assets/Marathons/SataraHIllMarathon/image-21.jpg";
+
 const marathons = [
   {
     id: "SangliMarathon2024",
@@ -39,7 +61,13 @@ const marathons = [
   {
     id: "KolhapurRuggdianMarathon2024",
     title: "Kolhapur Ruggdian Marathon 2024",
-    photos: [SM001, SM002, SM003, SM004],
+    photos: [RM001, RM002, RM003, RM004],
+  },
+
+  {
+    id: "KolhapurRuggdianMarathon2024",
+    title: "Kolhapur Ruggdian Marathon 2024",
+    photos: [RM001, RM002, RM003, RM004],
   },
   {
     id: "kolhapurLokmatMarathon2024",
@@ -69,6 +97,23 @@ const marathons = [
       KM022,
     ],
   },
+  {
+    id: "SataraHillMarathon2024",
+    title: "Satara Hill Marathon 2024",
+    photos: [
+      SHM001,
+      SHM002,
+      SHM003,
+      SHM004,
+      SHM004,
+      SHM005,
+      SHM006,
+      SHM007,
+      SHM008,
+      SHM008,
+      SHM009,
+    ],
+  },
 ];
 
 const MarathonEventPhotos: React.FC = () => {
@@ -90,15 +135,22 @@ const MarathonEventPhotos: React.FC = () => {
       <Typography variant="h4" component="h1" gutterBottom>
         {marathon.title}
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         {marathon.photos.map((photo, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Box
-              component="img"
-              sx={{ width: "100%", height: "auto", borderRadius: 1 }}
-              src={photo}
-              alt={`${marathon.title} photo ${index + 1}`}
-            />
+            <Card sx={{ boxShadow: 3, borderRadius: 2 }}>
+              <CardMedia
+                component="img"
+                sx={{ width: "100%", height: 400, objectFit: "cover" }}
+                image={photo}
+                alt={`${marathon.title} photo ${index + 1}`}
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary">
+                  {`Photo ${index + 1}`}
+                </Typography>
+              </CardContent>
+            </Card>
           </Grid>
         ))}
       </Grid>

@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <Box component="footer" sx={{ py: 2, textAlign: "center" }}>
       <Container>
         <Typography variant="body2" color="textSecondary">
-          © 2024 Shreyas Khamkar
+          © 2025 Shreyas Khamkar
         </Typography>
       </Container>
     </Box>

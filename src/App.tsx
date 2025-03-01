@@ -11,6 +11,7 @@ import Marathons from "./pages/Marathons";
 import MarathonEventPhotos from "./pages/MarathonEventPhotos";
 import Blog from "./pages/Blogs";
 import MarathonList from "./pages/MarathonList";
+import DevLog from "./pages/DevLogs";
 
 const App: React.FC = () => (
   <Router>
@@ -25,6 +26,7 @@ const App: React.FC = () => (
           <Route path="/books" element={<Books />} />
           <Route path="/quotes" element={<Quotes />} />
           <Route path="/" element={<MarathonList />} />
+          <Route path="/logs" element={<DevLog />} />
           <Route path="/marathons/:eventId" element={<MarathonEventPhotos />} />
           <Route path="/marathons" element={<Marathons />} />
           <Route path="*" element={<h2>Page Not Found</h2>} />

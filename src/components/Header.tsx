@@ -4,7 +4,7 @@ import {
   Toolbar,
   Typography,
   Box,
-  Link,
+  Link as MuiLink,
   Container,
   Avatar,
   IconButton,
@@ -14,14 +14,14 @@ import {
   ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-
+import { Link as RouterLink, useLocation } from "react-router-dom";
 const Header: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-
+  const location = useLocation();
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Blog", href: "/blogs" },
-    { name: "Dev Log", href: "/devlog" },
+    { name: "Dev Log", href: "/logs" },
     { name: "Collection", href: "/collection" },
     { name: "Marathon", href: "/marathons" },
     { name: "About", href: "/about" },
@@ -40,20 +40,19 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <Box sx={{ display: { xs: "none", md: "block" } }}>
             {navLinks.map((link) => (
-              <Link
+              <MuiLink
                 key={link.name}
-                href={link.href}
+                component={RouterLink}
+                to={link.href}
                 color="inherit"
                 sx={{
                   margin: 2,
                   textDecoration:
-                    window.location.pathname === link.href
-                      ? "underline"
-                      : "none",
+                    location.pathname === link.href ? "underline" : "none",
                 }}
               >
                 {link.name}
-              </Link>
+              </MuiLink>
             ))}
           </Box>
           {/* Mobile Navigation */}

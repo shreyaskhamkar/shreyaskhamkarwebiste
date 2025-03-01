@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Box, Avatar, Link } from "@mui/material";
-import avatarImage from "../assets/Marathons/SangliMarathon/SNGL01949.jpg";
+const avatarImage = "/src/assets/Marathons/SangliMarathon/SNGL01949.jpg";
 const Home: React.FC = () => {
   return (
     <Box textAlign="center">

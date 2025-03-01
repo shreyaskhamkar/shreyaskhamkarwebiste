@@ -16,7 +16,7 @@ const marathons = [
     imageUrl: "/src/assets/Marathons/SangliMarathon/SNGL00202.jpg", // Representative image
   },
   {
-    id: "kolhapurLokmatMarathon2024",
+    id: "KolhapurRuggdianMarathon2024",
     title: "Kolhapur Marathon 2024",
     imageUrl: "/src/assets/Marathons/KolhapurMarathon/KLP001.jpg",
   },
